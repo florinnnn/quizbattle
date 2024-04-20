@@ -4,7 +4,10 @@ public class BotMovement : MonoBehaviour
 {
     private Vector3 targetPosition;
     public float speed = 5f;
-    public float stoppingDistance = 0.1f; 
+    public float stoppingDistance = 0.1f;
+
+    private bool reachedTarget = false;
+    private float despawnTimer = 3f;
 
     void Start()
     {
@@ -16,10 +19,23 @@ public class BotMovement : MonoBehaviour
     {
         // Move towards the target position
         MoveTowardsTarget();
+
+        if (reachedTarget)
+        {
+            // Start the despawn timer
+            despawnTimer -= Time.deltaTime;
+            if (despawnTimer <= 0f)
+            {
+                // Despawn the bot after the timer reaches 0
+                Destroy(gameObject);
+            }
+        }
     }
 
     void MoveTowardsTarget()
     {
+        if (reachedTarget) return; // If bot reached target, don't move further
+
         // Calculate the direction towards the target
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
@@ -37,12 +53,7 @@ public class BotMovement : MonoBehaviour
         {
             // Stop moving the bot
             speed = 0f;
-        }
-
-        // Optionally, you can rotate the bot to face the direction of movement
-        if (moveDirection != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveDirection);
+            reachedTarget = true;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class BotSpawner : MonoBehaviour
 {
     public GameObject botPrefab;
-    public float spawnInterval = 2f;
+    public float spawnInterval = 4f;
     public float spawnRadius = 5f;
 
     private void Start()
