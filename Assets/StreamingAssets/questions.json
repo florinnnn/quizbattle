@@ -1,0 +1,107 @@
+[
+    {
+        "question": "This drink contains caffeine.",
+        "answer": "C",
+        "answers": ["Mineral water", "Orange juice", "Coffee", "Beer"]
+    },
+    {
+        "question": "Finish the proverb:\nPoets are born, ________.",
+        "answer": "A",
+        "answers": ["...not made.", "...but can also be made.", "...but that's not for sure.", "..., long live the poets!"]
+    },
+    {
+        "question": "If a TV program is rated G then this is true.",
+        "answer": "C",
+        "answers": ["It contains moderate violence.", "It contains mild sexual situations.", "It is suitable for all audiences.", "It is suitable for young children."]
+    },
+    {
+        "question": "The theory of relativity was introduced in physics by this man.",
+        "answer": "B",
+        "answers": ["Galileo Galilei", "Albert Einstein", "Archimedes", "Isaac Newton"]
+    },
+    {
+        "question": "The symbol for the chemical element iron is this.",
+        "answer": "B",
+        "answers": ["I", "Fe", "Zn", "Br"]
+    },
+    {
+        "question": "The author of the novel A Portrait of the Artist as a Young Man is this writer.",
+        "answer": "D",
+        "answers": ["T. S. Eliot", "Samuel Beckett", "William Faulkner", "James Joyce"]
+    },
+    {
+        "question": "The capital of Mongolia is this city.",
+        "answer": "D",
+        "answers": ["Davao", "Islamabad", "Quezon", "Ulaanbaatar"]
+    },
+    {
+        "question": "Mitochondria's function in cells is to perform this.",
+        "answer": "C",
+        "answers": ["To control chemical reactions within the cytoplasm", "To store information needed for cellular division", "To convert organic materials into energy", "To process proteins targeted to the plasma membrane"]
+    },
+    {
+        "question": "The US bought Alaska in this year.",
+        "answer": "D",
+        "answers": ["1942", "1882", "1854", "1867"]
+    },
+    {
+        "question": "The 23rd US President was in office during this period.",
+        "answer": "B",
+        "answers": ["1909 - 1913", "1889 - 1893", "1837 - 1841", "1877 - 1881"]
+    },
+    {
+        "question": "One of these actors did not star in the 1971 movie A Clockwork Orange.",
+        "answer": "C",
+        "answers": ["Michael Bates", "Patrick Magee", "Warren Brown", "Malcolm McDowell"]
+    },
+    {
+        "question": "The first Bulgarian state was formed in this year.",
+        "answer": "B",
+        "answers": ["429 AD", "681 AD", "712 AD", "651 AD"]
+    },
+    {
+        "question": "The 1962 Soccer World Cup tournament was held in this country.",
+        "answer": "C",
+        "answers": ["Switzerland", "Mexico", "Chile", "Italy"]
+    },
+    {
+        "question": "The Meryas were a probably Finno-Ugric tribe who lived in the region of modern Russia. This is the first historian to mention them.",
+        "answer": "B",
+        "answers": ["Eusebius of Caesarea", "Jordanes", "Priscus", "Sima Guang"]
+    },
+    {
+        "question": "The word abacus derives from a Hebrew word, meaning this.",
+        "answer": "C",
+        "answers": ["Movement", "Sky", "Dust", "Wood"]
+    },
+    {
+        "question": "Sean Connery, George Lazenby, Roger Moore, Timothy Dalton and Pierce Brosnan have all played the role of a fictional British spy. Who was that character?",
+        "answer": "A",
+        "answers": ["James Bond", "Johnny English", "Jim Malone", "Eliot Ness"]
+    },
+    {
+        "question": "Man On The Moon, Amadeus and One Flew Over the Cuckoo's Nest are all movies directed by him.",
+        "answer": "B",
+        "answers": ["Stanley Kubrick", "Miloš Forman", "Pedro Almodóvar", "Martin Scorsese"]
+    },
+    {
+        "question": "Across the Hall, Friends Like Us, Insomnia Café and Six of One are all working titles of one famous US TV-series. Name the series.",
+        "answer": "A",
+        "answers": ["Friends", "Sex and the City", "ALF", "One Tree Hill"]
+    },
+    {
+        "question": "The common link between these four movies -Chicken Run, Harry Potter, The Mummy Returns and Cast Away, is that...?",
+        "answer": "B",
+        "answers": ["They all treat one and the same social problem.", "They all are produced by one and the same company.", "One and the same actor is starring in all of them.", "They all refer to one and the same social class."]
+    },
+    {
+        "question": "Three of the following movies are produced by 20th Century Fox. Which is the odd one?",
+        "answer": "D",
+        "answers": ["Me, Myself & Irene", "Dr. Dolittle 2", "Cast Away", "House of Wax"]
+    },
+    {
+        "question": "Tom Cruise had a lead role in all, but one of these movies. Which one?",
+        "answer": "D",
+        "answers": ["Rain Man", "The Firm", "Magnolia", "Endless Love"]
+    }
+]
