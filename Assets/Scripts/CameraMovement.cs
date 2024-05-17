@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMover : MonoBehaviour
 {
     // Array to store the predefined positions and rotations
     private Vector3[] positions = new Vector3[]
@@ -60,22 +60,16 @@ public class CameraMovement : MonoBehaviour
 
     public void MoveLeft()
     {
-        // Move backwards in the list
-        if (currentIndex > 0)
-        {
-            currentIndex--;
-            SetTarget();
-        }
+        // Move backwards in the list, wrapping around if necessary
+        currentIndex = (currentIndex == 0) ? positions.Length - 1 : currentIndex - 1;
+        SetTarget();
     }
 
     public void MoveRight()
     {
-        // Move forwards in the list
-        if (currentIndex < positions.Length - 1)
-        {
-            currentIndex++;
-            SetTarget();
-        }
+        // Move forwards in the list, wrapping around if necessary
+        currentIndex = (currentIndex == positions.Length - 1) ? 0 : currentIndex + 1;
+        SetTarget();
     }
 
     private void SetTarget()
