@@ -102,6 +102,8 @@ public class CardQuestionHandler : MonoBehaviour
             if (buttonText != null)
             {
                 buttonText.text = answerText;
+                button.onClick.RemoveAllListeners(); // Remove existing listeners
+                button.onClick.AddListener(() => OnButtonClick(answerText));
             }
             else
             {
@@ -113,6 +115,36 @@ public class CardQuestionHandler : MonoBehaviour
             Debug.LogError("Button is not assigned.");
         }
     }
+
+    private void OnButtonClick(string selectedButtonText)
+    {
+        // Map each button text to its corresponding letter
+        Dictionary<string, string> buttonLetterMap = new Dictionary<string, string>
+    {
+        { button1.GetComponentInChildren<TextMeshProUGUI>().text, "A" },
+        { button2.GetComponentInChildren<TextMeshProUGUI>().text, "B" },
+        { button3.GetComponentInChildren<TextMeshProUGUI>().text, "C" },
+        { button4.GetComponentInChildren<TextMeshProUGUI>().text, "D" }
+    };
+
+        string correctAnswer = currentQuestion.answer;
+     
+        Debug.Log("Correct Answer: " + correctAnswer);
+
+        // Check if the selected button corresponds to the correct answer
+        if (buttonLetterMap.ContainsKey(selectedButtonText) && buttonLetterMap[selectedButtonText] == correctAnswer)
+        {
+            Debug.Log("Correct Answer!");
+            DisplayRandomQuestion();
+        }
+        else
+        {
+            Debug.Log("Incorrect Answer! Try Again.");
+        }
+    }
+
+
+
 
     public bool CheckAnswer(string selectedAnswer)
     {
