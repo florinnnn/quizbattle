@@ -32,6 +32,15 @@ public class BotMovement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Castle_objects")//you can also have a specific name as well
+        {
+            speed = 0f;
+            reachedTarget = true;
+        }
+    }
+
     void MoveTowardsTarget()
     {
         if (reachedTarget) return; // If bot reached target, don't move further
