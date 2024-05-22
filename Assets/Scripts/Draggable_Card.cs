@@ -10,7 +10,7 @@ public class Draggable_Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, (float)(this.transform.position.z + 0.25));
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, (float)(this.transform.position.z - 0.25));
         this.transform.SetParent(this.canvas.transform);
         this.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
@@ -27,7 +27,7 @@ public class Draggable_Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.25f);
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 0.25f);
 
         this.transform.SetParent(this.panel.transform);
 
@@ -70,11 +70,11 @@ public class Draggable_Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 0.5f);
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.25f, this.transform.position.z);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.5f);
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, this.transform.position.z);
     }
 }
