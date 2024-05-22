@@ -55,8 +55,8 @@ public class Arrow : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(arrowDamage);
+                UpdateHealthBar(enemy, healthSlider);
             }
-            UpdateHealthBar(enemy, healthSlider);
             Destroy(gameObject);
         }
     }

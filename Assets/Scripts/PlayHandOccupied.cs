@@ -5,11 +5,7 @@ public class PlayHandOccupied : MonoBehaviour
 {
     public bool isOccupied = false;
     public event Action<GameObject> OnCardAdded;
-
-    private void Start()
-    {
-
-    }
+    public event Action<GameObject> OnCardRemoved;
 
     private void Update()
     {
@@ -20,6 +16,11 @@ public class PlayHandOccupied : MonoBehaviour
         {
             GameObject addedCard = transform.GetChild(0).gameObject;
             OnCardAdded?.Invoke(addedCard);
+        }
+        else if (wasOccupied && !isOccupied)
+        {
+            GameObject removedCard = wasOccupied ? transform.GetChild(0).gameObject : null;
+            OnCardRemoved?.Invoke(removedCard);
         }
     }
 }
