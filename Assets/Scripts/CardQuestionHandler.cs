@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -14,21 +15,19 @@ public class CardQuestionHandler : MonoBehaviour
         public List<string> answers;
     }
 
-    public GameObject playHand;
+    public TextMeshProUGUI questionText;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public Button button4;
+
     private List<QuestionData> questionList;
+    private QuestionData currentQuestion;
 
     private void Start()
     {
         LoadQuestionsFromJson();
-        PlayHandOccupied playHandOccupied = playHand.GetComponent<PlayHandOccupied>();
-        if (playHandOccupied != null)
-        {
-            playHandOccupied.OnCardAdded += OnCardMoved;
-        }
-        else
-        {
-            Debug.LogError("PlayHandOccupied component not found on playHand GameObject.");
-        }
+        DisplayRandomQuestion();
     }
 
     private void LoadQuestionsFromJson()
@@ -55,16 +54,16 @@ public class CardQuestionHandler : MonoBehaviour
         }
     }
 
-    public void OnCardMoved(GameObject card)
+    public void DisplayRandomQuestion()
     {
-        QuestionData questionData = GetRandomQuestion();
-        if (questionData != null)
+        currentQuestion = GetRandomQuestion();
+        if (currentQuestion != null)
         {
-            UpdateCardWithQuestion(card, questionData);
+            UpdateUIWithQuestion(currentQuestion);
         }
         else
         {
-            Debug.LogError("No questions available to assign.");
+            Debug.LogError("No questions available to display.");
         }
     }
 
@@ -78,49 +77,54 @@ public class CardQuestionHandler : MonoBehaviour
         return null;
     }
 
-    private void UpdateCardWithQuestion(GameObject card, QuestionData questionData)
+    private void UpdateUIWithQuestion(QuestionData questionData)
     {
-        Transform questionStructure = card.transform.Find("QuestionStructure");
-
-        if (questionStructure != null)
+        if (questionText != null)
         {
-            TextMeshProUGUI questionText = questionStructure.Find("Question").GetComponent<TextMeshProUGUI>();
-            if (questionText != null)
-            {
-                questionText.text = questionData.question;
-            }
-            else
-            {
-                Debug.LogError("QuestionText component not found in QuestionStructure.");
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                string buttonName = "Answer" + (i + 1);
-                Transform buttonTransform = questionStructure.Find(buttonName);
-                if (buttonTransform != null)
-                {
-                    TextMeshProUGUI answerText = buttonTransform.GetComponentInChildren<TextMeshProUGUI>();
-                    if (answerText != null)
-                    {
-                        answerText.text = questionData.answers[i];
-                    }
-                    else
-                    {
-                        Debug.LogError("TextMeshProUGUI component not found in " + buttonName);
-                    }
-                }
-                else
-                {
-                    Debug.LogError(buttonName + " not found in QuestionStructure.");
-                }
-            }
-
-            questionStructure.gameObject.SetActive(true);
+            questionText.text = questionData.question;
         }
         else
         {
-            Debug.LogError("QuestionStructure not found in card GameObject.");
+            Debug.LogError("QuestionText component not assigned.");
         }
+
+        UpdateButtonWithAnswer(button1, questionData.answers[0]);
+        UpdateButtonWithAnswer(button2, questionData.answers[1]);
+        UpdateButtonWithAnswer(button3, questionData.answers[2]);
+        UpdateButtonWithAnswer(button4, questionData.answers[3]);
+    }
+
+    private void UpdateButtonWithAnswer(Button button, string answerText)
+    {
+        if (button != null)
+        {
+            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+            if (buttonText != null)
+            {
+                buttonText.text = answerText;
+            }
+            else
+            {
+                Debug.LogError("TextMeshProUGUI component not found in button " + button.name);
+            }
+        }
+        else
+        {
+            Debug.LogError("Button is not assigned.");
+        }
+    }
+
+    public bool CheckAnswer(string selectedAnswer)
+    {
+        if (currentQuestion != null)
+        {
+            return selectedAnswer == currentQuestion.answer;
+        }
+        return false;
+    }
+
+    public QuestionData GetCurrentQuestion()
+    {
+        return currentQuestion;
     }
 }
