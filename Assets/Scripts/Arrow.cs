@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Arrow : MonoBehaviour
 {
@@ -49,11 +50,20 @@ public class Arrow : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
+            Slider healthSlider = GetComponent<Slider>();
+
             if (enemy != null)
             {
                 enemy.TakeDamage(arrowDamage);
             }
+            UpdateHealthBar(enemy, healthSlider);
             Destroy(gameObject);
         }
+    }
+
+    void UpdateHealthBar(Enemy enemy, Slider healthSlider)
+    {
+        float healthPercentage = enemy.currentHealth / enemy.maxHealth;
+        healthSlider.value = healthPercentage;
     }
 }

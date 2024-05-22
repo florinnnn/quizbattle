@@ -52,18 +52,15 @@ public class Tower : MonoBehaviour
 
     void Attack()
     {
-        // Spawn arrow at the arrow spawn point
         GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, Quaternion.identity);
 
-        // Calculate direction towards the target enemy
         Vector3 direction = (targetEnemy.transform.position - arrowSpawnPoint.position).normalized;
 
-        // Add Rigidbody component dynamically
         Rigidbody arrowRigidbody = arrow.GetComponentInChildren<Rigidbody>();
 
         if (arrowRigidbody != null)
         {
-            arrowRigidbody.velocity = direction * 2; // Assuming arrowSpeed is a public float variable representing the speed of the arrow
+            arrowRigidbody.velocity = direction * 2;
         }
 
         lastAttackTime = Time.time;
