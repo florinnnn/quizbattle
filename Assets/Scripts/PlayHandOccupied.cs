@@ -1,27 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayHandOccupied : MonoBehaviour
 {
     public bool isOccupied = false;
+    public event Action<GameObject> OnCardAdded;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (this.transform.childCount == 0)
+        bool wasOccupied = isOccupied;
+        isOccupied = this.transform.childCount > 0;
+
+        if (!wasOccupied && isOccupied)
         {
-            isOccupied = false;
-        }
-        else
-        {
-            isOccupied = true;
+            GameObject addedCard = transform.GetChild(0).gameObject;
+            OnCardAdded?.Invoke(addedCard);
         }
     }
 }
