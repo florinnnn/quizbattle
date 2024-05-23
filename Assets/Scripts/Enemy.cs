@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
     public float maxHealth = 100f;
     public float currentHealth;
-
+  
     void Start()
     {
         currentHealth = maxHealth;
+       
     }
 
     public void TakeDamage(float damage)
@@ -21,6 +23,6 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 }

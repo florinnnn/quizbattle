@@ -19,17 +19,6 @@ public class BotMovement : MonoBehaviour
     {
         // Move towards the target position
         MoveTowardsTarget();
-
-        if (reachedTarget)
-        {
-            // Start the despawn timer
-            despawnTimer -= Time.deltaTime;
-            if (despawnTimer <= 0f)
-            {
-                // Despawn the bot after the timer reaches 0
-                Destroy(gameObject);
-            }
-        }
     }
 
     void OnCollisionEnter(Collision collision)

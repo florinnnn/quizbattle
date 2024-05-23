@@ -7,10 +7,13 @@ public class BotSpawner : MonoBehaviour
     public float spawnInterval = 4f;
     public float spawnRadius = 5f;
 
+  
+
     private void Start()
     {
         // Start spawning bots
         StartCoroutine(SpawnBotRoutine());
+
     }
 
     IEnumerator SpawnBotRoutine()
