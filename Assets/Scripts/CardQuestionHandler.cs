@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections;
 
 public class CardQuestionHandler : MonoBehaviour
 {
@@ -15,11 +16,10 @@ public class CardQuestionHandler : MonoBehaviour
         public List<string> answers;
     }
 
-    public GameObject ability;
-    private CardAbility cardAbility; // reference to the card ability script
-    public GameObject sageata;
-    private Arrow arrow; // reference to the arrow script
     public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
+
+    
+    public WallHealth wallhealth;
 
     public GameObject hand;
     public GameObject playHand;
@@ -32,15 +32,26 @@ public class CardQuestionHandler : MonoBehaviour
 
     private List<QuestionData> questionList;
     private QuestionData currentQuestion;
+    private CardAbility cardAbility;
 
     private void Start()
     {
         LoadQuestionsFromJson();
         DisplayRandomQuestion();
-        cardAbility = ability.GetComponent<CardAbility>();
-        arrow = sageata.GetComponent<Arrow>();
+
+        // Start the coroutine to handle the delay
+        StartCoroutine(HandleGettingVariables());
     }
 
+    private IEnumerator HandleGettingVariables()
+    {
+        
+
+
+        // Wait for the specified duration (e.g., 2 seconds)
+        yield return new WaitForSeconds(2.0f);
+
+    }
     private void LoadQuestionsFromJson()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, "questions.json");
@@ -147,12 +158,21 @@ public class CardQuestionHandler : MonoBehaviour
         {
             Debug.Log("Correct Answer!");
 
-            if (cardAbility.initialAbility == "Damage")
+
+            if (CardAbility.initialAbility.Equals("Damage"))
             {
-                Debug.Log("correct answer and the card ability is damage, the value is");
-                arrow.arrowDamage += (arrow.arrowDamage * cardAbility.initialValue) / 100;
-                Debug.Log(arrow.arrowDamage.ToString());
+                Debug.Log($"arrow damage before {Arrow.arrowDamage}");
+                Arrow.arrowDamage += CardAbility.initialValue*10;
+
+                Debug.Log($"arrow damage after {Arrow.arrowDamage}");
             }
+            if (CardAbility.initialAbility.Equals("Health"))
+            {
+                Debug.Log($"Health value before {wallhealth.currentHealth}");
+                wallhealth.SetDamage(CardAbility.initialValue);
+                Debug.Log($"Health value after {wallhealth.currentHealth}");
+            }
+
             questionPopUpPrefab.SetActive(false);
             DisplayRandomQuestion();
             playHand.SetActive(true);
@@ -165,6 +185,23 @@ public class CardQuestionHandler : MonoBehaviour
             DisplayRandomQuestion();
             playHand.SetActive(true);
             hand.SetActive(true);
+
+            if (CardAbility.initialAbility.Equals("Damage"))
+            {
+                Debug.Log($"arrow damage before {Arrow.arrowDamage}");
+                Arrow.arrowDamage -= CardAbility.initialValue * 10;
+                if(Arrow.arrowDamage < 0)
+                {
+                    Arrow.arrowDamage = 0;
+                }
+                Debug.Log($"arrow damage after {Arrow.arrowDamage}");
+            }
+            if (CardAbility.initialAbility.Equals("Health"))
+            {
+                Debug.Log($"Health value before {wallhealth.currentHealth}");
+                wallhealth.SetDamage(-CardAbility.initialValue);
+                Debug.Log($"Health value after {wallhealth.currentHealth}");
+            }
         }
     }
 

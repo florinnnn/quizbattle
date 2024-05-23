@@ -23,9 +23,11 @@ public class BotMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Castle_objects")//you can also have a specific name as well
+        if (collision.gameObject.tag == "Castle_objects")
         {
             speed = 0f;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
             reachedTarget = true;
         }
     }
