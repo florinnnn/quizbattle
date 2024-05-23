@@ -15,8 +15,8 @@ public class CardAbility : MonoBehaviour
     public Color healthColor = Color.green; // Color for health cards
 
     private string[] abilities = { "Damage", "Health" };
-    public string initialAbility = "";
-    public int initialValue = 0;
+    public string initialAbility;
+    public int initialValue;
 
     private RawImage cardImage;
 
@@ -88,6 +88,7 @@ public class CardAbility : MonoBehaviour
         }
     }
 
+    
     void DeclineCard()
     {
         // Instantiate a new card in the Hand GameObject
@@ -117,6 +118,7 @@ public class CardAbility : MonoBehaviour
 
         // Instantiate the QuestionPopUp prefab
         questionPopUpPrefab.SetActive(true);
+
         // Destroy the current card
         Destroy(gameObject);
         // You may need to adjust the position and rotation of the instantiated QuestionPopUp

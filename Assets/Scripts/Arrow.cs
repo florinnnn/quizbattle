@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Arrow : MonoBehaviour
 {
     public float arrowSpeed = 5f;
-    public float arrowDamage = 3f;
+    public static float arrowDamage;
 
     private GameObject targetEnemy;
 
@@ -50,9 +50,9 @@ public class Arrow : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            Slider healthSlider = GetComponent<Slider>();
+            Slider healthSlider = other.GetComponentInChildren<Slider>();
 
-            if (enemy != null)
+            if (enemy != null && healthSlider != null)
             {
                 enemy.TakeDamage(arrowDamage);
                 UpdateHealthBar(enemy, healthSlider);
@@ -60,6 +60,7 @@ public class Arrow : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     void UpdateHealthBar(Enemy enemy, Slider healthSlider)
     {

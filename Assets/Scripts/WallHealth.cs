@@ -12,9 +12,9 @@ public class WallHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float amount)
+    public void SetDamage(float amount)
     {
-        currentHealth -= amount;
+        currentHealth += amount;
         if (currentHealth < 0)
         {
             currentHealth = 0;
