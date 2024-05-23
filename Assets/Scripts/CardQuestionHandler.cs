@@ -15,6 +15,10 @@ public class CardQuestionHandler : MonoBehaviour
         public List<string> answers;
     }
 
+    public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
+    public GameObject hand;
+    public GameObject playHand;
+
     public TextMeshProUGUI questionText;
     public Button button1;
     public Button button2;
@@ -135,7 +139,10 @@ public class CardQuestionHandler : MonoBehaviour
         if (buttonLetterMap.ContainsKey(selectedButtonText) && buttonLetterMap[selectedButtonText] == correctAnswer)
         {
             Debug.Log("Correct Answer!");
+            questionPopUpPrefab.SetActive(false);
             DisplayRandomQuestion();
+            playHand.SetActive(true);
+            hand.SetActive(true);
         }
         else
         {
