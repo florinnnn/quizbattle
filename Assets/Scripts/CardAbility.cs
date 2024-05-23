@@ -15,8 +15,8 @@ public class CardAbility : MonoBehaviour
     public Color healthColor = Color.green; // Color for health cards
 
     private string[] abilities = { "Damage", "Health" };
-    private string initialAbility;
-    private int initialValue;
+    public string initialAbility = "";
+    public int initialValue = 0;
 
     private RawImage cardImage;
 
@@ -38,11 +38,11 @@ public class CardAbility : MonoBehaviour
         // Set ability text and color
         if (initialAbility == "Damage")
         {
-            abilityTMP.text = $"Damage - {initialValue}";
+            abilityTMP.text = $"Damage";
         }
         else
         {
-            abilityTMP.text = $"Health - {initialValue}";
+            abilityTMP.text = $"Health";
         }
 
         // Get the RawImage component
@@ -53,7 +53,7 @@ public class CardAbility : MonoBehaviour
         {
             cardImage.color = damageColor;
         }
-        else
+        else if (initialAbility == "Health")
         {
             cardImage.color = healthColor;
         }
@@ -102,8 +102,7 @@ public class CardAbility : MonoBehaviour
         // Instantiate a new card in the Hand GameObject
         Instantiate(cardPrefab, handTransform);
 
-        // Destroy the current card
-        Destroy(gameObject);
+
         // Set the Hand and PlayHand game objects invisible
         handTransform.gameObject.SetActive(false);
         GameObject playHand = GameObject.Find("PlayHand"); // Adjust the name if necessary
@@ -117,8 +116,9 @@ public class CardAbility : MonoBehaviour
         }
 
         // Instantiate the QuestionPopUp prefab
-        //GameObject questionPopUp = Instantiate(questionPopUpPrefab);
         questionPopUpPrefab.SetActive(true);
+        // Destroy the current card
+        Destroy(gameObject);
         // You may need to adjust the position and rotation of the instantiated QuestionPopUp
         // E.g., questionPopUp.transform.position = newPosition;
         // E.g., questionPopUp.transform.rotation = newRotation;
