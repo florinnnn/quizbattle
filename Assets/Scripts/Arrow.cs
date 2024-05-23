@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class Arrow : MonoBehaviour
 {
-    public float arrowSpeed = 10f;
-    public float arrowDamage = 10f;
+    public float arrowSpeed = 5f;
+    public float arrowDamage = 3f;
 
     private GameObject targetEnemy;
 

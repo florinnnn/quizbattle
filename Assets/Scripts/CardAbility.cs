@@ -9,13 +9,14 @@ public class CardAbility : MonoBehaviour
     public Button declineButton;
     public GameObject cardPrefab; // Reference to the card prefab
     public Transform handTransform; // Reference to the Hand GameObject
+    public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
 
     public Color damageColor = Color.red; // Color for damage cards
     public Color healthColor = Color.green; // Color for health cards
 
     private string[] abilities = { "Damage", "Health" };
-    private string initialAbility;
-    private int initialValue;
+    public string initialAbility = "";
+    public int initialValue = 0;
 
     private RawImage cardImage;
 
@@ -26,6 +27,7 @@ public class CardAbility : MonoBehaviour
 
         // Add listener for the decline button
         declineButton.onClick.AddListener(DeclineCard);
+        acceptButton.onClick.AddListener(AcceptCard);
     }
 
     void InitializeCardAbility()
@@ -36,11 +38,11 @@ public class CardAbility : MonoBehaviour
         // Set ability text and color
         if (initialAbility == "Damage")
         {
-            abilityTMP.text = $"Damage - {initialValue}";
+            abilityTMP.text = $"Damage";
         }
         else
         {
-            abilityTMP.text = $"Health - {initialValue}";
+            abilityTMP.text = $"Health";
         }
 
         // Get the RawImage component
@@ -51,7 +53,7 @@ public class CardAbility : MonoBehaviour
         {
             cardImage.color = damageColor;
         }
-        else
+        else if (initialAbility == "Health")
         {
             cardImage.color = healthColor;
         }
@@ -94,4 +96,32 @@ public class CardAbility : MonoBehaviour
         // Destroy the current card
         Destroy(gameObject);
     }
+
+    void AcceptCard()
+    {
+        // Instantiate a new card in the Hand GameObject
+        Instantiate(cardPrefab, handTransform);
+
+
+        // Set the Hand and PlayHand game objects invisible
+        handTransform.gameObject.SetActive(false);
+        GameObject playHand = GameObject.Find("PlayHand"); // Adjust the name if necessary
+        if (playHand != null)
+        {
+            playHand.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("PlayHand GameObject not found.");
+        }
+
+        // Instantiate the QuestionPopUp prefab
+        questionPopUpPrefab.SetActive(true);
+        // Destroy the current card
+        Destroy(gameObject);
+        // You may need to adjust the position and rotation of the instantiated QuestionPopUp
+        // E.g., questionPopUp.transform.position = newPosition;
+        // E.g., questionPopUp.transform.rotation = newRotation;
+    }
+
 }

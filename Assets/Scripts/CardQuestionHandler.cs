@@ -15,6 +15,15 @@ public class CardQuestionHandler : MonoBehaviour
         public List<string> answers;
     }
 
+    public GameObject ability;
+    private CardAbility cardAbility; // reference to the card ability script
+    public GameObject sageata;
+    private Arrow arrow; // reference to the arrow script
+    public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
+
+    public GameObject hand;
+    public GameObject playHand;
+
     public TextMeshProUGUI questionText;
     public Button button1;
     public Button button2;
@@ -28,6 +37,8 @@ public class CardQuestionHandler : MonoBehaviour
     {
         LoadQuestionsFromJson();
         DisplayRandomQuestion();
+        cardAbility = ability.GetComponent<CardAbility>();
+        arrow = sageata.GetComponent<Arrow>();
     }
 
     private void LoadQuestionsFromJson()
@@ -135,11 +146,25 @@ public class CardQuestionHandler : MonoBehaviour
         if (buttonLetterMap.ContainsKey(selectedButtonText) && buttonLetterMap[selectedButtonText] == correctAnswer)
         {
             Debug.Log("Correct Answer!");
+
+            if (cardAbility.initialAbility == "Damage")
+            {
+                Debug.Log("correct answer and the card ability is damage, the value is");
+                arrow.arrowDamage += (arrow.arrowDamage * cardAbility.initialValue) / 100;
+                Debug.Log(arrow.arrowDamage.ToString());
+            }
+            questionPopUpPrefab.SetActive(false);
             DisplayRandomQuestion();
+            playHand.SetActive(true);
+            hand.SetActive(true);
         }
         else
         {
-            Debug.Log("Incorrect Answer! Try Again.");
+            Debug.Log("Incorrect Answer!");
+            questionPopUpPrefab.SetActive(false);
+            DisplayRandomQuestion();
+            playHand.SetActive(true);
+            hand.SetActive(true);
         }
     }
 
