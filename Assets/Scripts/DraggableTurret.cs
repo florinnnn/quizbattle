@@ -7,6 +7,7 @@ public class DraggableTurret : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     static private Button cancelPlacementButton;
+    static private int turretPrice = 40;
     static public bool dragging = false;
     static public GameObject[] snappingZones;
     private GameObject draggedTurret;
@@ -18,6 +19,7 @@ public class DraggableTurret : MonoBehaviour
         snappingZones = GameObject.FindGameObjectsWithTag("SnappingZone");
         if (copyOfTurret != null)
         {
+            //GameManagerScript.coins -= turretPrice;
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = mainCamera.ScreenPointToRay(mousePosition);
             if (dragging == false)
@@ -51,8 +53,9 @@ public class DraggableTurret : MonoBehaviour
                 
                     if (Input.GetMouseButtonDown(0))
                     {
-                        if (closestSnappingZone != null)
+                        if (closestSnappingZone != null && turretPrice <= GameManagerScript.coins)
                         {
+                            GameManagerScript.coins -= turretPrice;
                             copyOfTurret.tag = "Untagged";
                             copyOfTurret = null;
                             Destroy(closestSnappingZone);

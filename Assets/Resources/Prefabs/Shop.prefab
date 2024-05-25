@@ -57,7 +57,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5959130679799764734}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8902426754560860222, guid: afaa5e78b6ce32044964b2226d0d7bb9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -214,6 +218,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4226427650433488133}
     m_Modifications:
+    - target: {fileID: 1733043583303187526, guid: 5dc1eb1df595a1b4e95bbf814903db63, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2375908025793766873, guid: 5dc1eb1df595a1b4e95bbf814903db63, type: 3}
       propertyPath: m_Name
       value: BoxTurretButton
@@ -316,6 +324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4226427650433488133}
     m_Modifications:
+    - target: {fileID: 4838940262068348227, guid: 7dea2bc0da6af4b43a82196c9e4d945d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7881729638781538188, guid: 7dea2bc0da6af4b43a82196c9e4d945d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
