@@ -34,6 +34,7 @@ public class CardQuestionHandler : MonoBehaviour
     private QuestionData currentQuestion;
     private CardAbility cardAbility;
 
+
     private void Start()
     {
         LoadQuestionsFromJson();
@@ -159,17 +160,17 @@ public class CardQuestionHandler : MonoBehaviour
             Debug.Log("Correct Answer!");
 
 
-            if (CardAbility.initialAbility.Equals("Damage"))
+            if (cardAbility.initialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage += CardAbility.initialValue*10;
+                Arrow.arrowDamage += cardAbility.initialValue*10;
 
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
             }
-            if (CardAbility.initialAbility.Equals("Health"))
+            if (cardAbility.initialAbility.Equals("Health"))
             {
                 Debug.Log($"Health value before {wallhealth.currentHealth}");
-                wallhealth.SetDamage(CardAbility.initialValue);
+                wallhealth.SetDamage(cardAbility.initialValue);
                 Debug.Log($"Health value after {wallhealth.currentHealth}");
             }
 
@@ -186,20 +187,20 @@ public class CardQuestionHandler : MonoBehaviour
             playHand.SetActive(true);
             hand.SetActive(true);
 
-            if (CardAbility.initialAbility.Equals("Damage"))
+            if (cardAbility.initialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage -= CardAbility.initialValue * 10;
+                Arrow.arrowDamage -= cardAbility.initialValue * 10;
                 if(Arrow.arrowDamage < 0)
                 {
                     Arrow.arrowDamage = 0;
                 }
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
             }
-            if (CardAbility.initialAbility.Equals("Health"))
+            if (cardAbility.initialAbility.Equals("Health"))
             {
                 Debug.Log($"Health value before {wallhealth.currentHealth}");
-                wallhealth.SetDamage(-CardAbility.initialValue);
+                wallhealth.SetDamage(-cardAbility.initialValue);
                 Debug.Log($"Health value after {wallhealth.currentHealth}");
             }
         }
