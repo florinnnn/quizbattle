@@ -17,8 +17,6 @@ public class CardQuestionHandler : MonoBehaviour
     }
 
     public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
-
-    
     public WallHealth wallhealth;
 
     public GameObject hand;
@@ -34,25 +32,21 @@ public class CardQuestionHandler : MonoBehaviour
     private QuestionData currentQuestion;
     private CardAbility cardAbility;
 
+    private string cardInitialAbility;
+    private int cardInitialValue;
 
     private void Start()
     {
         LoadQuestionsFromJson();
         DisplayRandomQuestion();
-
-        // Start the coroutine to handle the delay
-        StartCoroutine(HandleGettingVariables());
     }
 
-    private IEnumerator HandleGettingVariables()
+    public void SetCardAbility(string ability, int value)
     {
-        
-
-
-        // Wait for the specified duration (e.g., 2 seconds)
-        yield return new WaitForSeconds(2.0f);
-
+        cardInitialAbility = ability;
+        cardInitialValue = value;
     }
+
     private void LoadQuestionsFromJson()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, "questions.json");
@@ -143,15 +137,15 @@ public class CardQuestionHandler : MonoBehaviour
     {
         // Map each button text to its corresponding letter
         Dictionary<string, string> buttonLetterMap = new Dictionary<string, string>
-    {
-        { button1.GetComponentInChildren<TextMeshProUGUI>().text, "A" },
-        { button2.GetComponentInChildren<TextMeshProUGUI>().text, "B" },
-        { button3.GetComponentInChildren<TextMeshProUGUI>().text, "C" },
-        { button4.GetComponentInChildren<TextMeshProUGUI>().text, "D" }
-    };
+        {
+            { button1.GetComponentInChildren<TextMeshProUGUI>().text, "A" },
+            { button2.GetComponentInChildren<TextMeshProUGUI>().text, "B" },
+            { button3.GetComponentInChildren<TextMeshProUGUI>().text, "C" },
+            { button4.GetComponentInChildren<TextMeshProUGUI>().text, "D" }
+        };
 
         string correctAnswer = currentQuestion.answer;
-     
+
         Debug.Log("Correct Answer: " + correctAnswer);
 
         // Check if the selected button corresponds to the correct answer
@@ -159,18 +153,17 @@ public class CardQuestionHandler : MonoBehaviour
         {
             Debug.Log("Correct Answer!");
 
-
-            if (cardAbility.initialAbility.Equals("Damage"))
+            if (cardInitialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage += cardAbility.initialValue*10;
+                Arrow.arrowDamage += (cardInitialValue * Arrow.arrowDamage) / 100;
 
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
             }
-            if (cardAbility.initialAbility.Equals("Health"))
+            if (cardInitialAbility.Equals("Health"))
             {
                 Debug.Log($"Health value before {wallhealth.currentHealth}");
-                wallhealth.SetDamage(cardAbility.initialValue);
+                wallhealth.SetDamage(cardInitialValue);
                 Debug.Log($"Health value after {wallhealth.currentHealth}");
             }
 
@@ -187,27 +180,25 @@ public class CardQuestionHandler : MonoBehaviour
             playHand.SetActive(true);
             hand.SetActive(true);
 
-            if (cardAbility.initialAbility.Equals("Damage"))
+            if (cardInitialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage -= cardAbility.initialValue * 10;
-                if(Arrow.arrowDamage < 0)
+                Arrow.arrowDamage -= (cardInitialValue * Arrow.arrowDamage) * 100;
+                if (Arrow.arrowDamage < 5)
                 {
-                    Arrow.arrowDamage = 0;
+                    Arrow.arrowDamage = 5;
                 }
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
             }
-            if (cardAbility.initialAbility.Equals("Health"))
+            if (cardInitialAbility.Equals("Health"))
             {
                 Debug.Log($"Health value before {wallhealth.currentHealth}");
-                wallhealth.SetDamage(-cardAbility.initialValue);
+                wallhealth.SetDamage(-cardInitialValue);
                 Debug.Log($"Health value after {wallhealth.currentHealth}");
             }
         }
+
     }
-
-
-
 
     public bool CheckAnswer(string selectedAnswer)
     {

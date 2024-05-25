@@ -88,7 +88,6 @@ public class CardAbility : MonoBehaviour
         }
     }
 
-    
     void DeclineCard()
     {
         // Instantiate a new card in the Hand GameObject
@@ -100,9 +99,16 @@ public class CardAbility : MonoBehaviour
 
     void AcceptCard()
     {
+        // Find the CardQuestionHandler
+        CardQuestionHandler questionHandler = FindObjectOfType<CardQuestionHandler>();
+        if (questionHandler != null)
+        {
+            // Pass the ability and value to the CardQuestionHandler
+            questionHandler.SetCardAbility(initialAbility, initialValue);
+        }
+
         // Instantiate a new card in the Hand GameObject
         Instantiate(cardPrefab, handTransform);
-
 
         // Set the Hand and PlayHand game objects invisible
         handTransform.gameObject.SetActive(false);
@@ -125,5 +131,4 @@ public class CardAbility : MonoBehaviour
         // E.g., questionPopUp.transform.position = newPosition;
         // E.g., questionPopUp.transform.rotation = newRotation;
     }
-
 }

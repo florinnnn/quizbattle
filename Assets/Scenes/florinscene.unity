@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionPopUpPrefab: {fileID: 403350803}
-  wallhealth: {fileID: 0}
+  wallhealth: {fileID: 1462988512}
   hand: {fileID: 1499297452}
   playHand: {fileID: 1319235005}
   questionText: {fileID: 480685978}

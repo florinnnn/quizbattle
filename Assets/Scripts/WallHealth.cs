@@ -24,6 +24,10 @@ public class WallHealth : MonoBehaviour
         {
             currentHealth = 0;
         }
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
         if(currentHealth == 0)
         {
             Destroy(gameObject);
