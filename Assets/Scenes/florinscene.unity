@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionPopUpPrefab: {fileID: 403350803}
-  healthbar: {fileID: 111934146}
+  wallhealth: {fileID: 0}
   hand: {fileID: 1499297452}
   playHand: {fileID: 1319235005}
   questionText: {fileID: 480685978}
@@ -5077,7 +5077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 1
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 908251408}
 --- !u!1001 &930245452
@@ -6043,7 +6043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 1
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 108409633}
 --- !u!1 &1074790019
@@ -7252,7 +7252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 3
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 1206587342}
 --- !u!1 &1244653692
@@ -8264,7 +8264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 1
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 325703962}
 --- !u!1 &1440690913
@@ -9546,7 +9546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 1
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 1661961682}
 --- !u!1 &1680665936
@@ -9918,7 +9918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 1
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 305065998}
 --- !u!1 &1839641178
@@ -10596,7 +10596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 100
-  attackCooldown: 1
+  attackCooldown: 5
   arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
   arrowSpawnPoint: {fileID: 137545138}
 --- !u!1001 &1946347666
