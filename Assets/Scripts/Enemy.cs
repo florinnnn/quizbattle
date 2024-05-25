@@ -30,18 +30,16 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-<<<<<<< Updated upstream
         GameObject gameManager = GameObject.Find("GameManager");
         Counter counter = gameManager.GetComponent<Counter>();
-        if(counter != null)
+        if (counter != null)
         {
             counter.IncrementCount();
-=======
+        }
         GameManagerScript.coins += valueOfCoins;
         if (coinsOnDeath)
         {
             Instantiate(coinsOnDeath, transform.localPosition, Camera.main.transform.rotation);
->>>>>>> Stashed changes
         }
         Destroy(gameObject);
     }

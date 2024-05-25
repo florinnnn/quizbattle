@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8499795801746779471}
   - component: {fileID: 4838940262068348227}
   - component: {fileID: 1078784657665870635}
+  - component: {fileID: 5894274783907692728}
   m_Layer: 5
   m_Name: CyllinderTurret
   m_TagString: Untagged
@@ -101,6 +102,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 80
+--- !u!114 &5894274783907692728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158182719004501921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4476118538091bf48bea3c59c8d0328c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 5
+  attackCooldown: 1
+  arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
+  arrowSpawnPoint: {fileID: 0}
 --- !u!1 &8319277972966264065
 GameObject:
   m_ObjectHideFlags: 0

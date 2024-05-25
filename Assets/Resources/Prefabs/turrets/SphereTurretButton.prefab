@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 9205588433514609142}
   - component: {fileID: 8902426754560860222}
   - component: {fileID: 2395481064983048718}
+  - component: {fileID: 6349237035477308828}
   m_Layer: 5
   m_Name: SphereTurret
   m_TagString: Untagged
@@ -248,3 +249,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 80
+--- !u!114 &6349237035477308828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637226148862276875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4476118538091bf48bea3c59c8d0328c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 5
+  attackCooldown: 1
+  arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
+  arrowSpawnPoint: {fileID: 0}

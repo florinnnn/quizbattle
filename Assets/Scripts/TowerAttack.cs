@@ -52,9 +52,9 @@ public class Tower : MonoBehaviour
 
     void Attack()
     {
-        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, Quaternion.identity);
+        GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
 
-        Vector3 direction = (targetEnemy.transform.position - arrowSpawnPoint.position).normalized;
+        Vector3 direction = (targetEnemy.transform.position - transform.position).normalized;
 
         Rigidbody arrowRigidbody = arrow.GetComponentInChildren<Rigidbody>();
 

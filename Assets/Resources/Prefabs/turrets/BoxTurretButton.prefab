@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 7336507777912027126}
   - component: {fileID: 1733043583303187526}
   - component: {fileID: 1884904816676367301}
+  - component: {fileID: 8977532830797576177}
   m_Layer: 5
   m_Name: BoxTurret
   m_TagString: Untagged
@@ -248,3 +249,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 80
+--- !u!114 &8977532830797576177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395926954195452152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4476118538091bf48bea3c59c8d0328c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 5
+  attackCooldown: 1
+  arrowPrefab: {fileID: 6542576245540280110, guid: 1559aece01ddb7145b9a0073e153fd77, type: 3}
+  arrowSpawnPoint: {fileID: 0}
