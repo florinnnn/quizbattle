@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        Counter.IncrementCount();
         Destroy(gameObject);
     }
 }
