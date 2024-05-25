@@ -11,20 +11,17 @@ public class UpdateCastleHealthBar : MonoBehaviour
 
     void Start()
     {
-        healthPercentage = 100;
+        healthPercentage = 100f;
         Transform wall = this.transform.parent.parent;
 
         wallHealth = wall.GetComponent<WallHealth>();
         healthSlider = GetComponent<Slider>();
-        UpdateHealthBar();
+        healthSlider.value = healthPercentage;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            wallHealth.SetDamage(10f);
-        }
+    public void TakeDamage(float damage)
+    { 
+        wallHealth.TakeDamage(damage);
         UpdateHealthBar();
     }
     void UpdateHealthBar()
