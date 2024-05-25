@@ -17,14 +17,14 @@ public class Counter : MonoBehaviour
         countText.text = "Score: " + count.ToString();
         Debug.Log(count);
         Debug.Log(EndWin);
-        if (count >= 1)
+        if (count >= 500)
         {
             if (EndWin != null)
             {
 
                 EndWin.SetActive(true);
                 GameObject castle = GameObject.Find("Castle");
-                texthp.text = castle.GetComponent<WallHealth>().currentHealth.ToString();
+                texthp.text = "Remaining hp: " + castle.GetComponent<WallHealth>().currentHealth.ToString();
             }
 
 
