@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class WallHealth : MonoBehaviour
@@ -10,6 +11,8 @@ public class WallHealth : MonoBehaviour
     
     public GameObject EndLose;
     public TextMeshProUGUI textScore;
+    public TextMeshProUGUI healthScore;
+
 
     void Start()
     {
@@ -32,12 +35,22 @@ public class WallHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
+
+        GameObject healthBar = GameObject.Find("Castle/HealthCanva/HealthBar");
+        Slider healthSlider = healthBar.GetComponent<Slider>();
+        float healthPercentage = currentHealth / maxHealth;
+        healthSlider.value = healthPercentage;
+
+        healthScore.text = "Health " + currentHealth.ToString();
     }
 
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
-       
+        healthScore.text = "Health " + currentHealth.ToString();
+
         if (currentHealth < 0)
         {
             currentHealth = 0;

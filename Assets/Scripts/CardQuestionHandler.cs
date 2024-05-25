@@ -18,6 +18,8 @@ public class CardQuestionHandler : MonoBehaviour
 
     public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
     public WallHealth wallhealth;
+    public TextMeshProUGUI damageText;
+
 
     public GameObject hand;
     public GameObject playHand;
@@ -148,6 +150,7 @@ public class CardQuestionHandler : MonoBehaviour
 
         Debug.Log("Correct Answer: " + correctAnswer);
 
+
         // Check if the selected button corresponds to the correct answer
         if (buttonLetterMap.ContainsKey(selectedButtonText) && buttonLetterMap[selectedButtonText] == correctAnswer)
         {
@@ -159,6 +162,7 @@ public class CardQuestionHandler : MonoBehaviour
                 Arrow.arrowDamage += (cardInitialValue * Arrow.arrowDamage) / 100;
 
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
+                damageText.text = "Damage " + Arrow.arrowDamage.ToString("0.00");
             }
             if (cardInitialAbility.Equals("Health"))
             {
@@ -183,12 +187,13 @@ public class CardQuestionHandler : MonoBehaviour
             if (cardInitialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage -= (cardInitialValue * Arrow.arrowDamage) * 100;
+                Arrow.arrowDamage -= (cardInitialValue * Arrow.arrowDamage) / 100;
                 if (Arrow.arrowDamage < 5)
                 {
                     Arrow.arrowDamage = 5;
                 }
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
+                damageText.text = "Damage " + Arrow.arrowDamage.ToString("0.00");
             }
             if (cardInitialAbility.Equals("Health"))
             {
