@@ -1,35 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class Counter : MonoBehaviour
 {
-    public static TextMeshProUGUI countText; // Reference to the TextMeshPro text component
-    public static TextMeshProUGUI scoreText;
-    public static int count = 0;
-
-    void Start()
-    {
-        countText = GameObject.Find("Text GameScore").GetComponent<TextMeshProUGUI>();
-        countText.text = "Score: " + count.ToString();// Set the initial text to "Score: 0"
-
-        scoreText = GameObject.Find("Text Score").GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Result: " + count.ToString() + " kills";
-
-    }
+    public TextMeshProUGUI countText; // Reference to the TextMeshPro text component
+    public int count = 0;
+    public GameObject EndWin;
+    public TextMeshProUGUI texthp;
 
     // Function to increment the count by 1
-    public static void IncrementCount()
+    public void IncrementCount()
     {
         count++;
         countText.text = "Score: " + count.ToString();
-        scoreText.text = "Result: " + count.ToString() + " kills";
-
-
-        // Check if count reaches 100
-        if (count >= 100)
+        Debug.Log(count);
+        Debug.Log(EndWin);
+        if (count >= 1)
         {
-            //pt win
-            
+            if (EndWin != null)
+            {
+
+                EndWin.SetActive(true);
+                GameObject castle = GameObject.Find("Castle");
+                texthp.text = castle.GetComponent<WallHealth>().currentHealth.ToString();
+            }
+
+
 
         }
     }
