@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BotMovement : MonoBehaviour
@@ -29,6 +30,37 @@ public class BotMovement : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             reachedTarget = true;
+            StartCoroutine(DamageRoutine());
+        }
+    }
+
+    IEnumerator DamageRoutine()
+    {
+        while (true)
+        {
+            TakeDamage(1f);
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    void TakeDamage(float dmg)
+    {   
+        GameObject healthBar = GameObject.Find("Castle/HealthCanva/HealthBar");
+        if (healthBar != null)
+        {
+            UpdateCastleHealthBar healthBarScript = healthBar.GetComponent<UpdateCastleHealthBar>();
+            if (healthBarScript != null)
+            {
+                healthBarScript.TakeDamage(dmg);
+            }
+            else
+            {
+                Debug.LogError("UpdateCastleHealthBar script not found on HealthBar.");
+            }
+        }
+        else
+        {
+            Debug.LogError("HealthBar GameObject not found.");
         }
     }
 
