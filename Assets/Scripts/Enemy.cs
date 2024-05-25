@@ -23,7 +23,12 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Counter.IncrementCount();
+        GameObject gameManager = GameObject.Find("GameManager");
+        Counter counter = gameManager.GetComponent<Counter>();
+        if(counter != null)
+        {
+            counter.IncrementCount();
+        }
         Destroy(gameObject);
     }
 }

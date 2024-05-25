@@ -42,8 +42,10 @@ public class WallHealth : MonoBehaviour
         {
             if(EndLose != null)
             {
+                GameObject gameManager = GameObject.Find("GameManager");
+                Counter counter = gameManager.GetComponent<Counter>();
                 EndLose.SetActive(true);
-                textScore.text = Counter.countText.text;
+                textScore.text = counter.countText.text;
                  
             }
             Destroy(gameObject);
