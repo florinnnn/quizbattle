@@ -65,7 +65,10 @@ public class Draggable_Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     }
     void Update()
     {
-
+        if (this.panel.name == "PlayHand")
+        {
+            this.gameObject.GetComponent<Draggable_Card>().enabled = false;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -36,7 +36,7 @@ public class DraggableTurret : MonoBehaviour
 
                     foreach (GameObject snappingZone in snappingZones)
                     {
-                        float distance = Vector3.Distance(new Vector3(hit.point.x, hit.point.y + 0.5f, hit.point.z), snappingZone.transform.position);
+                        float distance = Vector3.Distance(new Vector3(hit.point.x, hit.point.y - 0.53f, hit.point.z), snappingZone.transform.position);
                         if (distance < closestDistance)
                         {
                             closestSnappingZone = snappingZone;
@@ -44,11 +44,11 @@ public class DraggableTurret : MonoBehaviour
                     }
                     if (closestSnappingZone != null)
                     {
-                        copyOfTurret.transform.position = closestSnappingZone.transform.position;
+                        copyOfTurret.transform.position = new Vector3(closestSnappingZone.transform.position.x, closestSnappingZone.transform.position.y - 0.53f, closestSnappingZone.transform.position.z);
                     }
                     else
                     {
-                        copyOfTurret.transform.position = new Vector3(hit.point.x, hit.point.y + 0.5f, hit.point.z);
+                        copyOfTurret.transform.position = new Vector3(hit.point.x, hit.point.y - 0.53f, hit.point.z);
                     }
                 
                     if (Input.GetMouseButtonDown(0))
@@ -82,7 +82,8 @@ public class DraggableTurret : MonoBehaviour
         if (!dragging)
         {
             copyOfTurret = Instantiate(draggedTurret, new Vector3(0, 0, 0), new Quaternion());
-            copyOfTurret.transform.localScale = new Vector3(1, 1, 1);
+            copyOfTurret.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            copyOfTurret.GetComponent<Turret>().enabled = false;
             copyOfTurret.tag = "DraggableTurret";
             cancelPlacementButton.interactable = true;
             dragging = true;

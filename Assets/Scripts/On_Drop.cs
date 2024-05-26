@@ -26,6 +26,7 @@ public class On_Drop : MonoBehaviour, IDropHandler
             {
                 d.panel = this.gameObject;
             }
+            
             Debug.Log("onDrop");
         }
         if (eventData.pointerDrag != null)

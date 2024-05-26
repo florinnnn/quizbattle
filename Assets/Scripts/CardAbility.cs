@@ -29,7 +29,6 @@ public class CardAbility : MonoBehaviour
         declineButton.onClick.AddListener(DeclineCard);
         acceptButton.onClick.AddListener(AcceptCard);
     }
-
     void InitializeCardAbility()
     {
         initialAbility = abilities[Random.Range(0, abilities.Length)];
@@ -91,8 +90,8 @@ public class CardAbility : MonoBehaviour
     void DeclineCard()
     {
         // Instantiate a new card in the Hand GameObject
-        Instantiate(cardPrefab, handTransform);
-
+        GameObject card = Instantiate(cardPrefab, handTransform);
+        card.gameObject.GetComponent<Draggable_Card>().enabled = true;
         // Destroy the current card
         Destroy(gameObject);
     }
@@ -108,7 +107,8 @@ public class CardAbility : MonoBehaviour
         }
 
         // Instantiate a new card in the Hand GameObject
-        Instantiate(cardPrefab, handTransform);
+        GameObject card = Instantiate(cardPrefab, handTransform);
+        card.gameObject.GetComponent<Draggable_Card>().enabled = true;
 
         // Set the Hand and PlayHand game objects invisible
         handTransform.gameObject.SetActive(false);
