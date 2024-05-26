@@ -13,13 +13,11 @@ public class DraggableTurret : MonoBehaviour
     private GameObject draggedTurret;
     private GameObject copyOfTurret;
 
-    // Update is called once per frame
     void Update()
     {
         snappingZones = GameObject.FindGameObjectsWithTag("SnappingZone");
         if (copyOfTurret != null)
         {
-            //GameManagerScript.coins -= turretPrice;
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = mainCamera.ScreenPointToRay(mousePosition);
             if (dragging == false)

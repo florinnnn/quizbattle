@@ -5,18 +5,6 @@ using UnityEngine.EventSystems;
 
 public class On_Drop : MonoBehaviour, IDropHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnDrop(PointerEventData eventData)
     {
         Draggable_Card d = eventData.pointerDrag.GetComponent<Draggable_Card>();

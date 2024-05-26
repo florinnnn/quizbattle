@@ -30,7 +30,7 @@ public class Draggable_Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 0.25f);
 
         this.transform.SetParent(this.panel.transform);
-
+ 
         Debug.Log("onEndDrag");
         this.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
@@ -65,7 +65,10 @@ public class Draggable_Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     }
     void Update()
     {
-
+        if (this.panel.name == "PlayHand")
+        {
+            this.gameObject.GetComponent<Draggable_Card>().enabled = false;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

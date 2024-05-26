@@ -10,7 +10,6 @@ public class CoinsOnDeathScript : MonoBehaviour
     private float fadeSpeed;
     private Color originalColor;
     public float speed = 4f;
-    // Start is called before the first frame update
     void Start()
     {
         fadeAwayText = GetComponent<TextMeshPro>();
@@ -18,7 +17,6 @@ public class CoinsOnDeathScript : MonoBehaviour
         fadeSpeed = originalColor.a / fadeDuration;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);

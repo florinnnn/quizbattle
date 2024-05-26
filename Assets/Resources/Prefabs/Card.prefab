@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12022972, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -665,6 +665,13 @@ MonoBehaviour:
   declineButton: {fileID: 741586352095112225}
   cardPrefab: {fileID: 7497240550675568213}
   handTransform: {fileID: 0}
+  questionPopUpPrefab: {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  healthColor: {r: 0, g: 1, b: 0, a: 1}
+  initialAbility: 
+  initialValue: 0
+  myTexture: {fileID: 2800000, guid: 09569e9aab8f9534e98841874860de8b, type: 3}
+  myTexture2: {fileID: 2800000, guid: 836260c8004c5754fba272abd97cf4eb, type: 3}
 --- !u!1 &8745384776858977746
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +699,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8745384776858977746}
   m_LocalRotation: {x: 0.23735265, y: 0.38516206, z: -0.10320388, w: 0.88581204}
-  m_LocalPosition: {x: 0, y: 0, z: -19.997318}
+  m_LocalPosition: {x: 0, y: 0, z: -29}
   m_LocalScale: {x: 0.03381, y: 0.03381, z: 0.033810005}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -701,7 +708,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.076202, y: 16.518326}
+  m_AnchoredPosition: {x: -55, y: -7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5298573380477905884

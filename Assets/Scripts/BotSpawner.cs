@@ -11,7 +11,6 @@ public class BotSpawner : MonoBehaviour
 
     private void Start()
     {
-        // Start spawning bots
         StartCoroutine(SpawnBotRoutine());
 
     }
@@ -27,18 +26,11 @@ public class BotSpawner : MonoBehaviour
 
     void SpawnBot()
     {
-        // Calculate random angle
         float randomAngle = Random.Range(0f, Mathf.PI * 2f);
 
-        // Calculate spawn position on the circumference of the circle
         Vector3 randomPosition = transform.position + new Vector3(Mathf.Cos(randomAngle), 0f, Mathf.Sin(randomAngle)) * spawnRadius;
-        // Ensure the bot is grounded (adjust this according to your game's needs)
         randomPosition.y = 0f;
-
-        // Instantiate the bot prefab at the calculated position without parenting it to any GameObject
         GameObject bot = Instantiate(botPrefab, randomPosition, Quaternion.identity);
-
-        // Attach the BotMovement script to the instantiated bot GameObject
         BotMovement botMovement = bot.GetComponent<BotMovement>();
         if (botMovement == null)
         {

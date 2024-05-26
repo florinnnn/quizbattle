@@ -5,19 +5,18 @@ using TMPro;
 
 public class Counter : MonoBehaviour
 {
-    public TextMeshProUGUI countText; // Reference to the TextMeshPro text component
+    public TextMeshProUGUI countText;
     public int count = 0;
     public GameObject EndWin;
     public TextMeshProUGUI texthp;
 
-    // Function to increment the count by 1
     public void IncrementCount()
     {
         count++;
         countText.text = "Score: " + count.ToString();
         Debug.Log(count);
         Debug.Log(EndWin);
-        if (count >= 500)
+        if (count >= 100)
         {
             if (EndWin != null)
             {

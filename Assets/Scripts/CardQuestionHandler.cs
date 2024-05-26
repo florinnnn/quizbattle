@@ -16,7 +16,7 @@ public class CardQuestionHandler : MonoBehaviour
         public List<string> answers;
     }
 
-    public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
+    public GameObject questionPopUpPrefab;
     public WallHealth wallhealth;
     public TextMeshProUGUI damageText;
 
@@ -121,7 +121,7 @@ public class CardQuestionHandler : MonoBehaviour
             if (buttonText != null)
             {
                 buttonText.text = answerText;
-                button.onClick.RemoveAllListeners(); // Remove existing listeners
+                button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() => OnButtonClick(answerText));
             }
             else
@@ -137,7 +137,6 @@ public class CardQuestionHandler : MonoBehaviour
 
     private void OnButtonClick(string selectedButtonText)
     {
-        // Map each button text to its corresponding letter
         Dictionary<string, string> buttonLetterMap = new Dictionary<string, string>
         {
             { button1.GetComponentInChildren<TextMeshProUGUI>().text, "A" },
@@ -151,7 +150,6 @@ public class CardQuestionHandler : MonoBehaviour
         Debug.Log("Correct Answer: " + correctAnswer);
 
 
-        // Check if the selected button corresponds to the correct answer
         if (buttonLetterMap.ContainsKey(selectedButtonText) && buttonLetterMap[selectedButtonText] == correctAnswer)
         {
             Debug.Log("Correct Answer!");

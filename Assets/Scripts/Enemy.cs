@@ -4,7 +4,7 @@ using TMPro;
 public class Enemy : MonoBehaviour
 {
     public GameObject coinsOnDeath;
-    private int valueOfCoins = 20;
+    private int valueOfCoins = 1;
     public float maxHealth = 100f;
     public float currentHealth;
   

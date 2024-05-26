@@ -7,16 +7,16 @@ public class CardAbility : MonoBehaviour
     public TextMeshProUGUI abilityTMP;
     public Button acceptButton;
     public Button declineButton;
-    public GameObject cardPrefab; // Reference to the card prefab
-    public Transform handTransform; // Reference to the Hand GameObject
-    public GameObject questionPopUpPrefab; // Reference to the QuestionPopUp prefab
+    public GameObject cardPrefab;
+    public Transform handTransform;
+    public GameObject questionPopUpPrefab;
 
-    public Color damageColor = Color.red; // Color for damage cards
-    public Color healthColor = Color.green; // Color for health cards
-
+    public Color damageColor = Color.red;
+    public Color healthColor = Color.green;
     private string[] abilities = { "Damage", "Health" };
     public string initialAbility;
     public int initialValue;
+    public Texture2D myTexture, myTexture2;
 
     private RawImage cardImage;
 
@@ -24,8 +24,6 @@ public class CardAbility : MonoBehaviour
     {
         InitializeCardAbility();
         SetButtonsActive(false);
-
-        // Add listener for the decline button
         declineButton.onClick.AddListener(DeclineCard);
         acceptButton.onClick.AddListener(AcceptCard);
     }
@@ -35,27 +33,26 @@ public class CardAbility : MonoBehaviour
         initialAbility = abilities[Random.Range(0, abilities.Length)];
         initialValue = Random.Range(3, 11);
 
-        // Set ability text and color
         if (initialAbility == "Damage")
         {
-            abilityTMP.text = $"Damage";
+            abilityTMP.text = $"";
         }
         else
         {
-            abilityTMP.text = $"Health";
+            abilityTMP.text = $"";
         }
 
-        // Get the RawImage component
         cardImage = GetComponent<RawImage>();
 
-        // Set card color based on ability
         if (initialAbility == "Damage")
         {
-            cardImage.color = damageColor;
+            //cardImage.color = damageColor;
+            cardImage.texture = myTexture;
         }
         else if (initialAbility == "Health")
         {
-            cardImage.color = healthColor;
+            //cardImage.color = healthColor;
+            cardImage.texture = myTexture2;
         }
     }
 
@@ -91,8 +88,8 @@ public class CardAbility : MonoBehaviour
     void DeclineCard()
     {
         // Instantiate a new card in the Hand GameObject
-        Instantiate(cardPrefab, handTransform);
-
+        GameObject card = Instantiate(cardPrefab, handTransform);
+        card.gameObject.GetComponent<Draggable_Card>().enabled = true;
         // Destroy the current card
         Destroy(gameObject);
     }
@@ -108,7 +105,8 @@ public class CardAbility : MonoBehaviour
         }
 
         // Instantiate a new card in the Hand GameObject
-        Instantiate(cardPrefab, handTransform);
+        GameObject card = Instantiate(cardPrefab, handTransform);
+        card.gameObject.GetComponent<Draggable_Card>().enabled = true;
 
         // Set the Hand and PlayHand game objects invisible
         handTransform.gameObject.SetActive(false);
