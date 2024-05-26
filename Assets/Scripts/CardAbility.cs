@@ -36,6 +36,7 @@ public class CardAbility : MonoBehaviour
         if (initialAbility == "Damage")
         {
             abilityTMP.text = $"";
+            initialValue = Random.Range(1, 3);
         }
         else
         {
@@ -96,21 +97,17 @@ public class CardAbility : MonoBehaviour
 
     void AcceptCard()
     {
-        // Find the CardQuestionHandler
         CardQuestionHandler questionHandler = FindObjectOfType<CardQuestionHandler>();
         if (questionHandler != null)
         {
-            // Pass the ability and value to the CardQuestionHandler
             questionHandler.SetCardAbility(initialAbility, initialValue);
         }
 
-        // Instantiate a new card in the Hand GameObject
         GameObject card = Instantiate(cardPrefab, handTransform);
         card.gameObject.GetComponent<Draggable_Card>().enabled = true;
 
-        // Set the Hand and PlayHand game objects invisible
         handTransform.gameObject.SetActive(false);
-        GameObject playHand = GameObject.Find("PlayHand"); // Adjust the name if necessary
+        GameObject playHand = GameObject.Find("PlayHand");
         if (playHand != null)
         {
             playHand.SetActive(false);
@@ -120,13 +117,8 @@ public class CardAbility : MonoBehaviour
             Debug.LogError("PlayHand GameObject not found.");
         }
 
-        // Instantiate the QuestionPopUp prefab
         questionPopUpPrefab.SetActive(true);
 
-        // Destroy the current card
         Destroy(gameObject);
-        // You may need to adjust the position and rotation of the instantiated QuestionPopUp
-        // E.g., questionPopUp.transform.position = newPosition;
-        // E.g., questionPopUp.transform.rotation = newRotation;
     }
 }

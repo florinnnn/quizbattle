@@ -83,6 +83,7 @@ public class DraggableTurret : MonoBehaviour
             copyOfTurret.GetComponent<Turret>().enabled = false;
             copyOfTurret.tag = "DraggableTurret";
             cancelPlacementButton.interactable = true;
+            copyOfTurret.GetComponent<Tower>().enabled = true;
             dragging = true;
         }
     }

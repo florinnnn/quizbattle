@@ -43,13 +43,13 @@ public class WallHealth : MonoBehaviour
         float healthPercentage = currentHealth / maxHealth;
         healthSlider.value = healthPercentage;
 
-        healthScore.text = "Health " + currentHealth.ToString();
+        healthScore.text = "Health " + currentHealth.ToString("0.00");
     }
 
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
-        healthScore.text = "Health " + currentHealth.ToString();
+        healthScore.text = "Health " + currentHealth.ToString("0.00");
 
         if (currentHealth < 0)
         {

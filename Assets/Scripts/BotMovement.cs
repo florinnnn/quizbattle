@@ -36,7 +36,7 @@ public class BotMovement : MonoBehaviour
     {
         while (true)
         {
-            TakeDamage(1f);
+            TakeDamage(0.35f);
             yield return new WaitForSeconds(5f);
         }
     }

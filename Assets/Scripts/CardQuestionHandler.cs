@@ -157,7 +157,7 @@ public class CardQuestionHandler : MonoBehaviour
             if (cardInitialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage += (cardInitialValue * Arrow.arrowDamage) / 100;
+                Arrow.arrowDamage += cardInitialValue;
 
                 Debug.Log($"arrow damage after {Arrow.arrowDamage}");
                 damageText.text = "Damage " + Arrow.arrowDamage.ToString("0.00");
@@ -185,7 +185,7 @@ public class CardQuestionHandler : MonoBehaviour
             if (cardInitialAbility.Equals("Damage"))
             {
                 Debug.Log($"arrow damage before {Arrow.arrowDamage}");
-                Arrow.arrowDamage -= (cardInitialValue * Arrow.arrowDamage) / 100;
+                Arrow.arrowDamage -= cardInitialValue;
                 if (Arrow.arrowDamage < 5)
                 {
                     Arrow.arrowDamage = 5;
